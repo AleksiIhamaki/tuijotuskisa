@@ -62,12 +62,18 @@ class Peikko:
 class Sankari:
 
 
-    def __init__(self, nimi, rohkeus=random.randint(4, 8), katseen_voima=random.randint(2, 4)):
+    def __init__(self, nimi, rohkeus, katseen_voima):
+        """Konstruktori."""
         self.nimi = nimi
-        self.rohkeus = rohkeus
-        self.katseen_voima = katseen_voima
+        self.rohkeus = random.randint(4, 8)
+        self.katseen_voima = random.randint(2, 4)
 
     def arvo_hurraus(self):
+        """Palauttaa satunnaisen hurraushuudahduksen.
+
+        :return: ääniä
+        :rtype: str
+        """
         SANKARINTAVUT = ("Roar", "Hahaa", "Hog Rider", "Purr", "clonk")
         tavut = random.choice(SANKARINTAVUT)
         return tavut
