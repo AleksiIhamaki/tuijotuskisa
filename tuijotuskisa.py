@@ -1,4 +1,5 @@
 import random
+from this import d
 import time
 
 
@@ -58,6 +59,19 @@ class Peikko:
 
 
 ### Kirjoita luokka Sankari tähän.
+class Sankari:
+
+
+    def __init__(self, nimi, rohkeus=random.randint(4, 8), katseen_voima=random.randint(2, 4)):
+        self.nimi = nimi
+        self.rohkeus = rohkeus
+        self.katseen_voima = katseen_voima
+
+    def arvo_hurraus(self):
+        SANKARINTAVUT = ("Roar", "Hahaa", "Hog Rider", "Purr", "clonk")
+        tavut = random.choice(SANKARINTAVUT)
+        return tavut
+
 
 
 def hurraa(olio):
