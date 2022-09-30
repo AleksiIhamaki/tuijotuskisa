@@ -1,5 +1,4 @@
 import random
-from this import d
 import time
 
 
@@ -60,24 +59,34 @@ class Peikko:
 
 ### Kirjoita luokka Sankari tähän.
 class Sankari:
+    """Luokka, joka kuvaa Sankarin.
 
+    :ivar nimi: sankarin nimi
+    :type nimi: str
+    :ivar rohkeus: sankarin rohkeus, arvotaan
+    :type rohkeus: int
+    :ivar katseen_voima: sankarin katseen voimakkuus, arvotaan
+    :type katseen_voima: int
 
-    def __init__(self, nimi, rohkeus, katseen_voima):
+    Julkiset metodit
+        arvo_hurraus()
+    """
+
+    HURRAAT = ("Jes", "Awesome", "Take that, loser", "Mahtavaa", "Voitto kotiin")
+
+    def __init__(self, nimi):
         """Konstruktori."""
         self.nimi = nimi
-        self.rohkeus = random.randint(4, 8)
-        self.katseen_voima = random.randint(2, 4)
+        self.rohkeus = random.randint(8, 12)
+        self.katseen_voima = random.randint(4, 6)
 
     def arvo_hurraus(self):
         """Palauttaa satunnaisen hurraushuudahduksen.
 
-        :return: ääniä
+        :return: hurraava huudahdus
         :rtype: str
         """
-        SANKARINTAVUT = ("Roar", "Hahaa", "Hog Rider", "Purr", "clonk")
-        tavut = random.choice(SANKARINTAVUT)
-        return tavut
-
+        return random.choice(self.HURRAAT)
 
 
 def hurraa(olio):
@@ -85,7 +94,7 @@ def hurraa(olio):
 
     :param olio: hurraava olio
     """
-    print('%s: "%s!"' % (olio.nimi, olio.arvo_hurraus()))
+    print(f'{olio.nimi}: "{olio.arvo_hurraus()}!"')
 
 
 def tulosta_rapaytys(rapayttaja):
@@ -95,9 +104,9 @@ def tulosta_rapaytys(rapayttaja):
     """
     if rapayttaja:
         if rapayttaja.rohkeus > 0:
-            print("ja %s räpäyttää!" % rapayttaja.nimi)
+            print(f"ja {rapayttaja.nimi} räpäyttää!")
         else:
-            print("ja %s karkaa!" % rapayttaja.nimi)
+            print(f"ja {rapayttaja.nimi} karkaa!")
     else:
         print("eikä kummankaan silmä rävähdä!")
 
@@ -155,13 +164,13 @@ pelastetut = 0
 while sankari.rohkeus > 0:
     # Tulostetaan kierroksen alkutiedot.
     sankarin_tiedot = sankari.nimi + " [" + str(sankari.rohkeus) + "]"
-    print("Sankarimme %s kävelee kohti seikkailua." % sankarin_tiedot)
+    print(f"Sankarimme {sankarin_tiedot} kävelee kohti seikkailua.")
     time.sleep(0.7)
 
     # Tulostetaan vastaan tulevan peikon tiedot.
     peikko = Peikko()
     peikon_tiedot = peikko.nimi + " [" + str(peikko.rohkeus) + "]"
-    print("Vastaan tulee hurja %s!" % peikon_tiedot)
+    print(f"Vastaan tulee hurja {peikon_tiedot}!")
     time.sleep(1)
 
     # Käydään tuijotuskisa peikkoa vastaan.
@@ -171,4 +180,4 @@ while sankari.rohkeus > 0:
     time.sleep(1.5)
 
 time.sleep(1.5)
-print("%s herää sängystään hikisenä - onneksi se oli vain unta!" % sankari.nimi)
+print(f"{sankari.nimi} herää sängystään hikisenä - onneksi se oli vain unta!")
